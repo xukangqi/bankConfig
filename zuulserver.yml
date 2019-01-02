@@ -1,0 +1,39 @@
+zuul:
+  host:
+    socket-timeout-millis: 60000
+    connect-timeout-millis: 60000
+  routes:
+    demoprovide:
+      path: /demoprovider/**
+      serviceId: demoProvider
+    democonsumer:
+      path: /democonsumer/**
+      serviceId: demoConsumer
+    customer-getaccounts:
+      path: /getaccounts/**
+      serviceId: customer-getaccounts
+    customer-getonecustomer:
+      path: /getonecustomer/**
+      serviceId: customer-getonecustomer
+    customer-service:
+      path: /customerservice/**
+      serviceId: customer-service
+    user-login:
+      path: /userlogin/**
+      serviceId: user-login
+    user-service:
+      path: /userservice/**
+      serviceId: user-service
+
+ribbon:
+  ReadTimeout: 60000  # 单位毫秒数
+  SocketTimeout: 60000
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
